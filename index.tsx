@@ -4,15 +4,17 @@
 */
 document.addEventListener('DOMContentLoaded', () => {
     // Slider elements
+    // FIX: Cast NodeList elements to HTMLImageElement to access the 'src' property.
     const slides = document.querySelectorAll<HTMLImageElement>('.slider-container .slide');
-    const sliderContainer = document.querySelector<HTMLElement>('.slider-container');
+    const sliderContainer = document.querySelector('.slider-container');
     
     // Modal elements
-    const modal = document.getElementById('imageModal') as HTMLElement;
+    const modal = document.getElementById('imageModal');
+    // FIX: Cast modal image element to HTMLImageElement to access the 'src' property.
     const modalImg = document.getElementById('modalImage') as HTMLImageElement;
-    const closeBtn = document.querySelector<HTMLElement>('.modal .close');
-    const prevBtn = document.querySelector<HTMLElement>('.modal .prev');
-    const nextBtn = document.querySelector<HTMLElement>('.modal .next');
+    const closeBtn = document.querySelector('.modal .close');
+    const prevBtn = document.querySelector('.modal .prev');
+    const nextBtn = document.querySelector('.modal .next');
 
     // Early return if essential elements are not found
     if (!slides.length || !sliderContainer || !modal || !modalImg || !closeBtn || !prevBtn || !nextBtn) {
@@ -22,10 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentSlide = 0;
     const slideIntervalTime = 3000; // 3 seconds
-    let slideInterval: number;
+    let slideInterval;
 
     // --- SLIDER LOGIC ---
-    function showSlide(index: number) {
+    function showSlide(index) {
         slides.forEach((slide, i) => {
             slide.classList.toggle('active', i === index);
         });
@@ -48,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- MODAL LOGIC ---
     let modalIndex = 0;
 
-    function showModalImage(index: number) {
+    function showModalImage(index) {
         modalIndex = index;
         if (slides[modalIndex]) {
             modalImg.src = slides[modalIndex].src;
