@@ -344,7 +344,7 @@ header nav {
 /* --- Pillar Sections --- */
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     margin-top: 2rem;
 }
@@ -494,6 +494,11 @@ footer {
         width: 100%;
     }
     
+    /* Pillar Sections */
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
     /* Problem Section - remove forced line breaks */
     .problem-section p br {
         display: none;
