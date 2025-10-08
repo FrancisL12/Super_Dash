@@ -94,4 +94,25 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide);
     startSlider();
     console.log("SuperDash landing page and interactive image slider initialized.");
+
+    // --- SCROLL ANIMATION LOGIC ---
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+    if (animatedElements.length > 0) {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Animate only once
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        animatedElements.forEach(element => {
+            observer.observe(element);
+        });
+        console.log("Scroll animations initialized.");
+    }
 });
