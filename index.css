@@ -14,29 +14,6 @@
     --font-family: 'Poppins', sans-serif;
 }
 
-/* --- Animations --- */
-@keyframes pulse-yellow {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(240, 185, 11, 0.7); }
-    70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(240, 185, 11, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(240, 185, 11, 0); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes zoomIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-
 /* --- Base Styles --- */
 * {
     margin: 0;
@@ -53,7 +30,6 @@ body {
     color: var(--text-light);
     line-height: 1.6;
     background-color: var(--background-dark);
-    animation: fadeIn 0.5s ease-in-out;
 }
 
 .container {
@@ -130,7 +106,6 @@ section {
 
 .btn-primary:hover {
     filter: brightness(1.1);
-    transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 
@@ -274,8 +249,6 @@ header nav {
     display: block;
     max-width: 80%;
     max-height: 80vh;
-    animation-name: zoomIn;
-    animation-duration: 0.3s;
 }
 
 .close {
@@ -358,7 +331,6 @@ header nav {
 }
 
 .benefit-card:hover {
-    transform: translateY(-5px);
     border-color: var(--primary-yellow);
     box-shadow: 0 0 3px rgba(240, 185, 11, 0.8), 0 0 8px rgba(240, 185, 11, 0.6);
 }
@@ -402,46 +374,6 @@ header nav {
 .final-cta-section .tagline {
     color: var(--text-secondary);
 }
-
-/* --- Scroll Animations --- */
-.animate-on-scroll {
-    opacity: 0;
-    will-change: transform, opacity; /* performance optimization */
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.animate-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Prepare children of staggered containers */
-.benefits-grid .benefit-card,
-.benefits-grid-dark .benefit-item {
-    opacity: 0;
-    will-change: transform, opacity;
-    transform: translateY(30px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-}
-
-/* Animate children when parent is visible */
-.benefits-grid.is-visible .benefit-card,
-.benefits-grid-dark.is-visible .benefit-item {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Stagger the animation with delays */
-.benefits-grid.is-visible .benefit-card:nth-child(1) { transition-delay: 0s; }
-.benefits-grid.is-visible .benefit-card:nth-child(2) { transition-delay: 0.1s; }
-.benefits-grid.is-visible .benefit-card:nth-child(3) { transition-delay: 0.2s; }
-.benefits-grid.is-visible .benefit-card:nth-child(4) { transition-delay: 0.3s; }
-
-.benefits-grid-dark.is-visible .benefit-item:nth-child(1) { transition-delay: 0s; }
-.benefits-grid-dark.is-visible .benefit-item:nth-child(2) { transition-delay: 0.1s; }
-.benefits-grid-dark.is-visible .benefit-item:nth-child(3) { transition-delay: 0.2s; }
-.benefits-grid-dark.is-visible .benefit-item:nth-child(4) { transition-delay: 0.3s; }
 
 /* --- Footer --- */
 footer {
@@ -555,13 +487,5 @@ footer {
     }
     .footer-links a {
       margin: 0 0.5rem;
-    }
-
-    /* Tweak animations for a more subtle effect on smaller screens */
-    .animate-on-scroll,
-    .benefits-grid .benefit-card,
-    .benefits-grid-dark .benefit-item {
-        /* Reduce slide-up distance for a tighter feel on mobile */
-        transform: translateY(20px);
     }
 }

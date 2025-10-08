@@ -3,29 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
 */
 document.addEventListener('DOMContentLoaded', () => {
-    // --- SCROLL ANIMATION LOGIC ---
-    // This logic is moved to the top to ensure page content is always visible,
-    // even if the slider/modal components below encounter an issue.
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
-
-    if (animatedElements.length > 0) {
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Animate only once
-                }
-            });
-        }, {
-            threshold: 0.1 // Trigger when 10% of the element is visible
-        });
-
-        animatedElements.forEach(element => {
-            observer.observe(element);
-        });
-        console.log("Scroll animations initialized.");
-    }
-
     // Slider elements
     // FIX: Cast slide elements to HTMLImageElement to access the 'src' property.
     const slides = document.querySelectorAll<HTMLImageElement>('.slider-container .slide');
